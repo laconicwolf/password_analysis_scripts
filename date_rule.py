@@ -3,9 +3,9 @@
 __author__ = 'Jake Miller (@LaconicWolf)'
 __date__ = '20190316'
 __version__ = '0.01'
-__description__ = """Creates a rule file that will append digits that may 
+__description__ = """Creates a rule file that will append digits that may
 map to dates in popular formats that may be appended to files. You can also
-append or prepend characters or words, capitalize the first character of the 
+append or prepend characters or words, capitalize the first character of the
 words, and double the word. Dates are currently MDY, but can be DMY or YMD"""
 
 import argparse
@@ -134,20 +134,20 @@ def main():
     # 19000101-20991231
     four_dig_year_month_day = create_4_dig_year_month_day(start_year, end_year)
 
-    all_dates = two_dig_year 
+    all_dates = two_dig_year
     if date_time_format == 'MDY':
-        all_dates += month_day 
-        all_dates += month_day_2_dig_year 
-        all_dates += month_day_4_dig_year 
+        all_dates += month_day
+        all_dates += month_day_2_dig_year
+        all_dates += month_day_4_dig_year
 
     if date_time_format == 'YMD':
         all_dates += month_day
-        all_dates += two_dig_year_month_day 
+        all_dates += two_dig_year_month_day
         all_dates += four_dig_year_month_day
 
     if date_time_format == 'DMY':
         all_dates += month_day
-        all_dates += two_dig_year_month_day 
+        all_dates += two_dig_year_month_day
         all_dates += four_dig_year_month_day
 
     # Write to rule file
@@ -189,7 +189,7 @@ def main():
                         fh.write('d${}${}c\n'.format('$'.join(list(date)), '$'.join(list(item))))
 
             if prepensions:
-                for item in appensions:
+                for item in prepensions:
                     # Writes items with dates
                     fh.write('^{}${}\n'.format('^'.join(list(item)[::-1]), '$'.join(list(date)) ))
 
